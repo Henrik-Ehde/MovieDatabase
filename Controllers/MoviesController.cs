@@ -20,10 +20,18 @@ namespace MovieDatabase.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        public IActionResult Index(string searchString)
         {
-            var applicationDbContext = _context.Movies.Include(m => m.Genre);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["CurrentFilter"] = searchString;
+
+            List<Movie> movies = _context.Movies.Include(m => m.Genre).ToList();
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(m => m.Title.ToUpper().Contains(searchString.ToUpper())).ToList();
+            }
+
+            return View(movies);
         }
 
         // GET: Movies/Details/5
@@ -48,7 +56,7 @@ namespace MovieDatabase.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
-            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Id");
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Name");
             return View();
         }
 
@@ -57,8 +65,20 @@ namespace MovieDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,ReleaseDate,GenreId")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,ReleaseDate,GenreId")] Movie movie, IFormFile Picture)
         {
+            //Save the picture file in folder
+            string fileName = System.IO.Path.GetFileName(Picture.FileName);
+            string filePath = "./wwwroot/Images/" + fileName;
+
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                Picture.CopyTo(stream);
+            }
+
+            movie.ImgFileName = fileName;
+
+
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
@@ -66,7 +86,15 @@ namespace MovieDatabase.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Id", movie.GenreId);
+
+
+
             return View(movie);
+        }
+
+        public IActionResult AddImage()
+        {
+            return View();
         }
 
         // GET: Movies/Edit/5
@@ -82,7 +110,7 @@ namespace MovieDatabase.Controllers
             {
                 return NotFound();
             }
-            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Id", movie.GenreId);
+            ViewData["GenreId"] = new SelectList(_context.Genres, "Id", "Name", movie.GenreId);
             return View(movie);
         }
 
@@ -91,7 +119,7 @@ namespace MovieDatabase.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ReleaseDate,GenreId")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ReleaseDate,GenreId,ImgFileName")] Movie movie)
         {
             if (id != movie.Id)
             {

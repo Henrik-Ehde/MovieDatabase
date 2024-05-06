@@ -1,0 +1,33 @@
+﻿@model MovieDatabase.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+
+<h1>Create</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("AddImage", "Movies", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <input type="file" name="postedFile" />
+            <input type="submit" id="btnUpload" value="Upload" />
+        }
+
+
+    </div>
+</div>
+
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

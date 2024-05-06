@@ -10,6 +10,7 @@
 <div>
     <h4>Movie</h4>
     <hr />
+    <img src="/images/@Model.ImgFileName" style="max-width: 80%; max-height:60vh" />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
@@ -33,7 +34,7 @@
             @Html.DisplayNameFor(model => model.Genre)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre.Id)
+            @Html.DisplayFor(model => model.Genre.Name)
         </dd>
     </dl>
     

@@ -4,12 +4,32 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Movies</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+@if (ViewContext.HttpContext.User.IsInRole("admin"))
+{
+    <p>
+        <a asp-action="Create">Add new movie</a>
+    </p>
+}
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-6">
+    @foreach (var item in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img class="card-img-top" src="/images/@item.ImgFileName" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Title)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
+                    <a asp-action="Details" asp-route-id="@item.Id">More Info</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@* <table class="table">
     <thead>
         <tr>
             <th>
@@ -40,9 +60,10 @@
                 @Html.DisplayFor(modelItem => item.ReleaseDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Genre.Id)
+                @Html.DisplayFor(modelItem => item.Genre.Name)
             </td>
             <td>
+                
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
@@ -50,4 +71,7 @@
         </tr>
 }
     </tbody>
-</table>
+</table> *@
+
+
+

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MovieDatabase.Data;
 
@@ -11,9 +12,11 @@ using MovieDatabase.Data;
 namespace MovieDatabase.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240502130358_smallFix")]
+    partial class smallFix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -152,14 +155,14 @@ namespace MovieDatabase.Data.Migrations
                         {
                             Id = "02174cf0–9412–4cfe - afbf - 59f706d72cf6",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "34123d52-f5fd-4e76-8e70-360344b7614c",
+                            ConcurrencyStamp = "9b6dd9c8-099d-4afc-a71e-ded2fb76c2a8",
                             Email = "admin@moviedatabase.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedUserName = "ADMIN@MOVIEDATABASE.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMowsYmEr8XnzVyYFHjbH4HQe+KgApcJ0dfIELlFM9Lh83aY5q4MxgnSILjuuzREMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIc1whKEfJ9DkwyU4iU7duFusAjegDhY6mqLaczFIoiDMl6G1Q/bjusDbNoqb0CvrQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "14a26353-fcb8-437e-a25f-f7462ed2df37",
+                            SecurityStamp = "ee47693d-0a04-4bac-a290-58ef432a7dde",
                             TwoFactorEnabled = false,
                             UserName = "admin@moviedatabase.com"
                         });
@@ -288,10 +291,6 @@ namespace MovieDatabase.Data.Migrations
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImgFileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly>("ReleaseDate")
                         .HasColumnType("date");
