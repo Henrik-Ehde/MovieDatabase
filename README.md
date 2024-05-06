@@ -1,12 +1,15 @@
 # MovieDatabase
 
-A website where users can browse and search for information about movies. 
+A website where users can browse movies. 
 
 Created with ASP.NET Core MVC
 
+![MovieDatabase](https://github.com/Henrik-Ehde/MovieDatabase/assets/25432910/289ce98b-d58b-4671-84b2-f526f2564418)
+
+
 Users can register an account and log in, which will affect what they see and what actions they can take.
 
-**Guests** (users who haven't logged in) can browse and search movies.
+**Guests** (users who aren't logged in) can browse and search movies.
 
 **Members** (logged in users) can also update the information about movies.
 
