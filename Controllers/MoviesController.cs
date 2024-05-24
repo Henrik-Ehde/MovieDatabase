@@ -20,11 +20,11 @@ namespace MovieDatabase.Controllers
         }
 
         // GET: Movies
-        public IActionResult Index(string searchString)
+        public async Task<IActionResult> Index(string searchString)
         {
             ViewData["CurrentFilter"] = searchString;
 
-            List<Movie> movies = _context.Movies.Include(m => m.Genre).ToList();
+            List<Movie> movies = await _context.Movies.Include(m => m.Genre).OrderBy(m => m.Title).ToListAsync();
 
             if (!String.IsNullOrEmpty(searchString))
             {
