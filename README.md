@@ -2,8 +2,8 @@
 
 A web app where users can browse movies.
 
-Check out the live site here: https://henriksmoviedb.azurewebsites.net/
-(The site may show an error at first because the database server is offline while not in use. Refreshing the page after a few seconds should show the site working.)
+Check out the live site here: https://henriksmoviedb.azurewebsites.net/ <br>
+If the site shows an error, wait a minute then refresh. The site will appear correctly once the backend has started
 
 Created with ASP.NET Core MVC. Deployed on Azure and connected to an azure database.
 
