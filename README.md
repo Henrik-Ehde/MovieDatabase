@@ -2,10 +2,9 @@
 
 A web app where users can browse movies.
 
-Check out the live site here: https://henriksmoviedb.azurewebsites.net/
-(The site may show an error at first because the database server is offline while not in use. Refreshing the page after a few seconds should show the site working.)
+Check out the live site here: https://moviedb.azurewebsites.net/ <br>
 
-Created with ASP.NET Core MVC. Deployed on Azure and connected to an azure database.
+Created with ASP.NET Core MVC. Deployed on Azure with an integrated SQLite database.
 
 ![MovieDatabase](https://github.com/Henrik-Ehde/MovieDatabase/assets/25432910/289ce98b-d58b-4671-84b2-f526f2564418)
 
@@ -25,12 +24,3 @@ To try out **admin** features, you can use this login:
 **admin@moviedatabase.com**
 
 **myPassword**
-
-## INSTRUCTIONS
-To download this project and try out the app with a local database:
-1. In visual studio, Select **Clone Repository**, copy and paste this url: https://github.com/Henrik-Ehde/MovieDatabase.git
-2. Open Package Manager Console, write **update-database** and press enter to create the database and seed it with some data
-3. Press **F5** to launch the website in your browser
-
-
-
