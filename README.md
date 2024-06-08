@@ -2,10 +2,9 @@
 
 A web app where users can browse movies.
 
-Check out the live site here: https://henriksmoviedb.azurewebsites.net/ <br>
-If the site shows an error, wait a minute then refresh. The site will appear correctly once the backend has started
+Check out the live site here: https://moviedb.azurewebsites.net/ <br>
 
-Created with ASP.NET Core MVC. Deployed on Azure and connected to an azure database.
+Created with ASP.NET Core MVC. Deployed on Azure with an integrated SQLite database.
 
 ![MovieDatabase](https://github.com/Henrik-Ehde/MovieDatabase/assets/25432910/289ce98b-d58b-4671-84b2-f526f2564418)
 
