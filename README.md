@@ -24,12 +24,3 @@ To try out **admin** features, you can use this login:
 **admin@moviedatabase.com**
 
 **myPassword**
-
-## INSTRUCTIONS
-To download this project and try out the app with a local database:
-1. In visual studio, Select **Clone Repository**, copy and paste this url: https://github.com/Henrik-Ehde/MovieDatabase.git
-2. Open Package Manager Console, write **update-database** and press enter to create the database and seed it with some data
-3. Press **F5** to launch the website in your browser
-
-
-
