@@ -4,7 +4,7 @@ This version was deployed Azure connected to an Azure SQL Database. It is curren
 
 Created with ASP.NET Core MVC.
 
-MovieDatabase
+![MovieDatabase](https://github.com/Henrik-Ehde/MovieDatabase/assets/25432910/289ce98b-d58b-4671-84b2-f526f2564418)
 
 Users can register an account and log in, which will affect what they see and what actions they can take.
 
